@@ -13,4 +13,17 @@ class Room(models.Model):
 
     def __str__(self):
         return self.name
+    
 
+
+class Message(models.Model):
+
+    #user=
+    room = models.ForeignKey(Room,on_delete=models.CASCADE) #if room is deleted message will also be deleted, parent deleted child also deleted
+    body = models.TextField()
+    updated = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.body[0:50] # in preview we only want first 50 characters to prevent a lot of text
+    
