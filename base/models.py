@@ -20,6 +20,9 @@ class Room(models.Model):
 
     def __str__(self):
         return self.name
+    
+    class Meta():
+        ordering =['-updated','-created'] # orders rooms by first updated value then created, - is used for descending order
  
 
 class Message(models.Model):
