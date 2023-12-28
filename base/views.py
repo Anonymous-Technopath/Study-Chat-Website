@@ -32,6 +32,10 @@ def loginPage(request):
     return render(request,'base/login_register.html',context)
 
 
+def logoutUser(request):
+    logout(request)
+    return redirect('home')
+
 def home(request):
     q = request.GET.get('q') if request.GET.get('q')!=None else '' # here is all is selected thne q will be empty string so every topic has an empty string in it
     rooms=Room.objects.filter(
