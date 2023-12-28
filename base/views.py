@@ -3,10 +3,16 @@ from django.http import HttpResponse
 # Create your views here.
 from .models import Room,Topic
 from.forms import RoomForm
+from django.db.models import Q
 
 def home(request):
     q = request.GET.get('q') if request.GET.get('q')!=None else '' # here is all is selected thne q will be empty string so every topic has an empty string in it
-    rooms=Room.objects.filter(topic__name__icontains=q) #it should atleast contain the given string in topic name, i with contains means not case sensitive
+    rooms=Room.objects.filter(
+        Q(topic__name__icontains=q) |
+        Q(name__icontains=q) |
+        Q(description__icontains=q)
+
+    ) #it should atleast contain the given string in topic name, i with contains means not case sensitive
 
     topics = Topic.objects.all()
 
