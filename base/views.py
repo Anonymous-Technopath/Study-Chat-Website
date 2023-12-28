@@ -5,8 +5,8 @@ from .models import Room,Topic
 from.forms import RoomForm
 
 def home(request):
-    q = request.GET.get('q')
-    rooms=Room.objects.filter(topic__name=q)
+    q = request.GET.get('q') if request.GET.get('q')!=None else '' # here is all is selected thne q will be empty string so every topic has an empty string in it
+    rooms=Room.objects.filter(topic__name__icontains=q) #it should atleast contain the given string in topic name, i with contains means not case sensitive
 
     topics = Topic.objects.all()
 
