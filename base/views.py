@@ -5,7 +5,9 @@ from .models import Room,Topic
 from.forms import RoomForm
 
 def home(request):
-    rooms = Room.objects.all()
+    q = request.GET.get('q')
+    rooms=Room.objects.filter(topic__name=q)
+
     topics = Topic.objects.all()
 
 
@@ -18,7 +20,7 @@ def room(request,pk):
 
 def createRoom(request):
     form = RoomForm()
-    if request.method=='POST':
+    if request.method == 'POST':
         form = RoomForm(request.POST)
         if form.is_valid():
             form.save() # save in database
