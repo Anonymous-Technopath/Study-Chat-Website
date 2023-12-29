@@ -12,6 +12,8 @@ from django.contrib.auth.decorators import login_required
 
 
 def loginPage(request):
+    
+    page='login'
 
     if request.user.is_authenticated:
         return redirect('home')
@@ -33,9 +35,13 @@ def loginPage(request):
         else :
             messages.error(request,"Username or password does not exist")
 
-    context={}
+    context={'page':page}
     return render(request,'base/login_register.html',context)
 
+def registerPage(request):
+    page='register'
+    context={'page':page}
+    return render(request,'base/login_register.html',context)
 
 def logoutUser(request):
     logout(request)
