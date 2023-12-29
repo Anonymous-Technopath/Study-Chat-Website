@@ -14,7 +14,7 @@ class Room(models.Model):
     topic= models.ForeignKey(Topic, on_delete=models.SET_NULL, null=True) # If Topic was placed below Room in code then we would pass 'Topic' instead 
     name = models.CharField(max_length=200)
     description = models.TextField(null=True,blank=True) # null=True means null value can be allowed,blank is for forms meaning now field can be left blank
-    #participants=
+    participants=models.ManyToManyField(User,related_name='participants',blank=True)
     updated = models.DateTimeField(auto_now=True) # it saves time stamp whenever we save the instance, it will change after every save
     created = models.DateTimeField(auto_now_add=True) # it would save the time stamp of first creation of instance, it wont change
 
