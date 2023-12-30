@@ -36,3 +36,6 @@ class Message(models.Model):
     def __str__(self):
         return self.body[0:50] # in preview we only want first 50 characters to prevent a lot of text
     
+    class Meta():
+        ordering =['-updated','-created']
+    
