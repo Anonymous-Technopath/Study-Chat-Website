@@ -1,5 +1,6 @@
+{% load static %}
 <a href="/">
-    LOGO
+    <img src="{% static 'images/Logo.webp' %}" height="50px" width="50px">
 </a>
 
 <form method="GET" action="{% url 'home' %}">
