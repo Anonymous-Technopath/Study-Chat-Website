@@ -6,6 +6,6 @@ class RoomForm(ModelForm):
         model = Room
         # fields = ['name','body'] # default customized version
         fields='__all__' # This will include all fields from Room in form except date time as they are not editable fields
-        
+        exclude = ['host','participants']
 
 
