@@ -71,7 +71,7 @@ def home(request):
     ) #it should atleast contain the given string in topic name, i with contains means not case sensitive
 
     topics = Topic.objects.all()
-    room_messages = Message.objects.all()
+    room_messages = Message.objects.filter(Q(room__topic__name__icontains=q))
 
     return render(request,'base/home.html',{'rooms':rooms,'topics':topics,'room_messages':room_messages})
 
