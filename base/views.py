@@ -192,3 +192,10 @@ def updateUser(request):
 
     context={'form':form}
     return render(request,'base/update-user.html',context)
+
+
+def viewTopics(request):
+    topics = Topic.objects.all()
+
+    context ={'topics':topics}
+    return render(request,'base/topics.html',context)
