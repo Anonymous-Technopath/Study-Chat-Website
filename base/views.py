@@ -69,7 +69,7 @@ def home(request):
 
     ) #it should atleast contain the given string in topic name, i with contains means not case sensitive
 
-    topics = Topic.objects.all()
+    topics = Topic.objects.all()[:5]
     room_messages = Message.objects.filter(Q(room__topic__name__icontains=q))
 
     return render(request,'base/home.html',{'rooms':rooms,'topics':topics,'room_messages':room_messages})
@@ -195,7 +195,9 @@ def updateUser(request):
 
 
 def viewTopics(request):
-    topics = Topic.objects.all()
+    
+    q = request.GET.get('q') if request.GET.get('q')!=None else ''
+    topics = Topic.objects.filter(name__icontains=q)
 
     context ={'topics':topics}
     return render(request,'base/topics.html',context)
