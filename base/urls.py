@@ -17,4 +17,5 @@ urlpatterns = [
     path('profile/<str:pk>/',views.userProfile,name='user-profile'),
     path('update-user/',views.updateUser, name='update-user'),
     path('view-topics/',views.viewTopics, name='view-topics'),
+    path('view-activities/',views.viewActivities, name='view-activities'),
 ]

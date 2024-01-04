@@ -201,3 +201,10 @@ def viewTopics(request):
 
     context ={'topics':topics}
     return render(request,'base/topics.html',context)
+
+def viewActivities(request):
+
+    activity_messages=Message.objects.all()
+    context={'activity_messages':activity_messages}
+
+    return render(request,'base/activity.html',context)
