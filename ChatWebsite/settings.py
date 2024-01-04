@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     'corsheaders',
 ]
 
+AUTH_USER_MODEL = 'base.User'  # Custom User Model
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
